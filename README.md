@@ -14,5 +14,7 @@ Running
 There are some example knapsack problems provided in the data directory. Example:
 
 `./solver.o data/ks_60_0` 
+
 `99837`
+
 `0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 1 0 1 0 1 0 0 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0`
