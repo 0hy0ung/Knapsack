@@ -122,16 +122,26 @@ int main (int argc, char* argv[]){
 
     cout << items_used[capacity][num_items] << endl;
 
-	cout << "That means: ";
+    std::size_t tot_weight = 0;
+
+    cout << "That means: ";
     for (int i = 1; i<num_items; i++)
     {
         if (items_used[capacity][i] == 1)
+	{
 		std::cout << "( " << items[i].get_value() << " " << items[i].get_weight() << " )";
+		tot_weight += items[i].get_weight();
+	}
     }
     if (items_used[capacity][num_items] == 1)
-		std::cout << "( " << items[num_items].get_value() << " " << items[num_items].get_weight() << " )" << std::endl;
-	else
+    {
+	std::cout << "( " << items[num_items].get_value() << " " << items[num_items].get_weight() << " )" << std::endl;
+	tot_weight += items[num_items].get_weight();
+    }
+    else
 	std::cout << std::endl;
+
+    cout << "Total knapsack weight is: " << tot_weight << std::endl;
 
     return 0;
 }
