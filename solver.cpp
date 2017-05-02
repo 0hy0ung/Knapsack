@@ -51,12 +51,18 @@ int main (int argc, char* argv[]){
     int num_items, capacity; // Get the items and the capacity
     infile >> num_items >> capacity;
 
+	std::cout << "Input file says the knapsack can hold a maximum of " << capacity << " units of weight and our set of data is " << num_items << " elements." << std::endl;
+
     Item* items = new Item[num_items + 1];
 
     int value,weight;
-    for (int i = 0; i < num_items; i ++){
+    for (int i = 0; i < num_items; i ++)
+    {
         infile >> value >> weight;
         items[i+1].setup(value, weight);
+
+	if (i == 0)
+		std::cout << "The first element of our data has a value of: " << value << " and weighs: " << weight << " units." << std::endl;
     }
 
     //std::sort(items + 0, items + num_items);
@@ -106,13 +112,26 @@ int main (int argc, char* argv[]){
         copytable(table, capacity+1);
     }
     //Print answer
-    cout << table[1][capacity]<< " " << endl;
+    cout << "Maximum value that the knapsack can hold: " << table[1][capacity]<< " " << endl;
+    cout << "The knapsack should carry: ";
 
-    for (int i = 1; i<num_items; i++){
+    for (int i = 1; i<num_items; i++)
+    {
         cout << items_used[capacity][i] << ' ';
     }
 
     cout << items_used[capacity][num_items] << endl;
+
+	cout << "That means: ";
+    for (int i = 1; i<num_items; i++)
+    {
+        if (items_used[capacity][i] == 1)
+		std::cout << "( " << items[i].get_value() << " " << items[i].get_weight() << " )";
+    }
+    if (items_used[capacity][num_items] == 1)
+		std::cout << "( " << items[num_items].get_value() << " " << items[num_items].get_weight() << " )" << std::endl;
+	else
+	std::cout << std::endl;
 
     return 0;
 }
